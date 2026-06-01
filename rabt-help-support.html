@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rabt Platform — Help & Support</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-deepest: #040d1a;
+    --navy-deep: #071428;
+    --navy-mid: #0c1f3f;
+    --navy-light: #112952;
+    --navy-border: #1a3560;
+    --accent: #3b82f6;
+    --accent-bright: #60a5fa;
+    --accent-glow: rgba(59,130,246,0.18);
+    --accent-glow-strong: rgba(59,130,246,0.32);
+    --white: #ffffff;
+    --white-80: rgba(255,255,255,0.80);
+    --white-50: rgba(255,255,255,0.50);
+    --white-20: rgba(255,255,255,0.12);
+    --white-10: rgba(255,255,255,0.06);
+    --teal: #0ea5e9;
+    --teal-glow: rgba(14,165,233,0.15);
+    --success: #10b981;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy-deepest);
+    color: var(--white-80);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Background grid ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Glow orbs ── */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .orb-1 { width: 600px; height: 600px; background: rgba(59,130,246,0.12); top: -200px; left: -200px; }
+  .orb-2 { width: 500px; height: 500px; background: rgba(14,165,233,0.08); bottom: 0; right: -150px; }
+
+  /* ── Layout ── */
+  .page-wrap { position: relative; z-index: 1; }
+
+  /* ── Header / Nav ── */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    background: rgba(4,13,26,0.75);
+    border-bottom: 1px solid var(--navy-border);
+    padding: 0 40px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+  }
+  .logo-img {
+    height: 38px;
+    width: auto;
+    filter: brightness(1.1);
+  }
+  .logo-text {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+  }
+  .logo-text span {
+    display: block;
+    font-size: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-bright);
+  }
+
+  .nav-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--white-10);
+    border: 1px solid var(--navy-border);
+    border-radius: 40px;
+    padding: 6px 18px 6px 10px;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-bright);
+  }
+  .nav-badge::before {
+    content: '';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--success);
+    box-shadow: 0 0 8px var(--success);
+    animation: pulse-dot 2s infinite;
+  }
+  @keyframes pulse-dot {
+    0%,100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 90px 40px 70px;
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-bright);
+    background: var(--accent-glow);
+    border: 1px solid rgba(59,130,246,0.3);
+    border-radius: 40px;
+    padding: 5px 16px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 20px;
+    animation: fadeUp 0.7s ease 0.1s both;
+  }
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(90deg, var(--accent-bright), var(--teal));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero p {
+    font-size: 1.1rem;
+    color: var(--white-50);
+    max-width: 560px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+    animation: fadeUp 0.7s ease 0.2s both;
+  }
+
+  /* ── Search bar ── */
+  .search-wrap {
+    max-width: 580px;
+    margin: 0 auto;
+    position: relative;
+    animation: fadeUp 0.7s ease 0.3s both;
+  }
+  .search-wrap input {
+    width: 100%;
+    padding: 18px 60px 18px 56px;
+    background: var(--navy-mid);
+    border: 1px solid var(--navy-border);
+    border-radius: 16px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  .search-wrap input::placeholder { color: var(--white-50); }
+  .search-wrap input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-glow), 0 8px 32px rgba(0,0,0,0.4);
+  }
+  .search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-bright);
+    width: 20px;
+  }
+  .search-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--accent);
+    border: none;
+    border-radius: 10px;
+    padding: 8px 18px;
+    color: white;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .search-btn:hover { background: var(--accent-bright); transform: translateY(-50%) scale(1.03); }
+
+  /* ── Quick links ── */
+  .quick-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+    animation: fadeUp 0.7s ease 0.4s both;
+  }
+  .quick-link {
+    font-size: 0.78rem;
+    color: var(--white-50);
+    background: var(--white-10);
+    border: 1px solid var(--navy-border);
+    border-radius: 30px;
+    padding: 6px 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .quick-link:hover { color: var(--white); border-color: var(--accent); background: var(--accent-glow); }
+
+  /* ── Section wrappers ── */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .section-sub {
+    color: var(--white-50);
+    font-size: 0.92rem;
+    margin-bottom: 36px;
+  }
+
+  /* ── Category cards ── */
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 70px;
+  }
+  .cat-card {
+    background: var(--navy-mid);
+    border: 1px solid var(--navy-border);
+    border-radius: 20px;
+    padding: 28px 22px;
+    cursor: pointer;
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s, background 0.25s;
+    text-decoration: none;
+    display: block;
+  }
+  .cat-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    background: var(--navy-light);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35), 0 0 0 1px var(--accent-glow-strong);
+  }
+  .cat-icon {
+    width: 46px; height: 46px;
+    border-radius: 13px;
+    background: var(--accent-glow);
+    border: 1px solid rgba(59,130,246,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 1.3rem;
+  }
+  .cat-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .cat-card p {
+    font-size: 0.78rem;
+    color: var(--white-50);
+    line-height: 1.5;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--navy-border) 30%, var(--navy-border) 70%, transparent);
+    margin-bottom: 60px;
+  }
+
+  /* ── FAQ Accordion ── */
+  .faq-group { margin-bottom: 48px; }
+  .faq-group-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-bright);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .faq-group-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--navy-border);
+  }
+
+  .faq-item {
+    border: 1px solid var(--navy-border);
+    border-radius: 16px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: border-color 0.25s;
+    background: var(--navy-mid);
+  }
+  .faq-item.open {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
+
+  .faq-q {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--white);
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.97rem;
+    font-weight: 500;
+    padding: 20px 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    transition: color 0.2s;
+  }
+  .faq-q:hover { color: var(--accent-bright); }
+  .faq-item.open .faq-q { color: var(--accent-bright); }
+
+  .faq-chevron {
+    flex-shrink: 0;
+    width: 26px; height: 26px;
+    border-radius: 8px;
+    background: var(--white-10);
+    border: 1px solid var(--navy-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, background 0.2s;
+  }
+  .faq-item.open .faq-chevron {
+    transform: rotate(180deg);
+    background: var(--accent-glow);
+    border-color: rgba(59,130,246,0.4);
+  }
+  .faq-chevron svg { width: 14px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
+  }
+  .faq-a.open { max-height: 600px; }
+  .faq-a-inner {
+    padding: 0 24px 22px;
+    color: var(--white-50);
+    font-size: 0.92rem;
+    line-height: 1.75;
+  }
+  .faq-a-inner ul {
+    list-style: none;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .faq-a-inner ul li::before {
+    content: '→';
+    color: var(--accent-bright);
+    margin-right: 10px;
+  }
+  .faq-a-inner strong { color: var(--white-80); font-weight: 500; }
+
+  /* ── Contact strip ── */
+  .contact-strip {
+    background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-light) 100%);
+    border: 1px solid var(--navy-border);
+    border-radius: 24px;
+    padding: 50px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 60px;
+  }
+  .contact-strip::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: var(--accent-glow);
+    filter: blur(60px);
+    pointer-events: none;
+  }
+  .contact-text h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .contact-text p { color: var(--white-50); font-size: 0.92rem; line-height: 1.6; max-width: 380px; }
+  .contact-actions { display: flex; gap: 14px; flex-shrink: 0; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 28px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  }
+  .btn-primary:hover {
+    background: var(--accent-bright);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--accent-glow-strong);
+  }
+  .btn-secondary {
+    background: var(--white-10);
+    color: var(--white-80);
+    border: 1px solid var(--navy-border);
+    border-radius: 12px;
+    padding: 14px 28px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { background: var(--white-20); border-color: var(--accent); color: var(--white); }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--navy-border);
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .footer-logo { display: flex; align-items: center; gap: 10px; }
+  .footer-logo img { height: 28px; opacity: 0.7; }
+  footer p { font-size: 0.78rem; color: var(--white-50); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a {
+    font-size: 0.78rem;
+    color: var(--white-50);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent-bright); }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .animate-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 700px) {
+    header { padding: 0 20px; }
+    .hero { padding: 60px 20px 50px; }
+    .section { padding: 0 20px 60px; }
+    .contact-strip { padding: 36px 28px; flex-direction: column; }
+    footer { flex-direction: column; gap: 20px; text-align: center; }
+    .footer-links { justify-content: center; }
+    .cat-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<div class="page-wrap">
+
+  <!-- Header -->
+  <header>
+    <a href="#" class="logo-wrap">
+      <img src="https://serv.bazari.aygroup.app/storage/app/public/rabtt.png" alt="Rabt" class="logo-img">
+      <div class="logo-text">
+        Rabt Network
+        <span>Help &amp; Support</span>
+      </div>
+    </a>
+    <div class="nav-badge">Support Online</div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-eyebrow">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="6"/></svg>
+      Documentation Center
+    </div>
+    <h1>How can we <em>help you</em> today?</h1>
+    <p>Browse guides, FAQs, and documentation to get the most out of Rabt Network — your connected communication platform.</p>
+    <div class="search-wrap">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+      </svg>
+      <input type="text" placeholder="Search articles, settings, rooms…" id="searchInput">
+      <button class="search-btn" onclick="doSearch()">Search</button>
+    </div>
+    <div class="quick-links">
+      <a class="quick-link" href="#account">Account Setup</a>
+      <a class="quick-link" href="#chat">Messaging</a>
+      <a class="quick-link" href="#settings">Settings</a>
+      <a class="quick-link" href="#rooms">Rooms</a>
+      <a class="quick-link" href="#privacy">Privacy</a>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <div class="section animate-in">
+    <p class="section-title">Browse by Topic</p>
+    <p class="section-sub">Find what you need, fast.</p>
+    <div class="cat-grid">
+      <a href="#account" class="cat-card">
+        <div class="cat-icon">🔐</div>
+        <h3>Account Management</h3>
+        <p>Passwords, registration, usernames &amp; more.</p>
+      </a>
+      <a href="#chat" class="cat-card">
+        <div class="cat-icon">💬</div>
+        <h3>Chat &amp; Messaging</h3>
+        <p>Send messages, files, mentions, and read receipts.</p>
+      </a>
+      <a href="#settings" class="cat-card">
+        <div class="cat-icon">⚙️</div>
+        <h3>Settings</h3>
+        <p>Notifications, display names, email alerts.</p>
+      </a>
+      <a href="#rooms" class="cat-card">
+        <div class="cat-icon">🏠</div>
+        <h3>Rooms</h3>
+        <p>Create, manage, and configure your rooms.</p>
+      </a>
+      <a href="#privacy" class="cat-card">
+        <div class="cat-icon">🛡️</div>
+        <h3>Privacy &amp; Safety</h3>
+        <p>Data handling, abuse reporting, and your rights.</p>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-icon">📡</div>
+        <h3>Network &amp; Status</h3>
+        <p>Connectivity, server status, and syncing.</p>
+      </a>
+    </div>
+  </div>
+
+  <hr class="divider" style="max-width:1100px;margin:0 auto 60px;">
+
+  <!-- FAQ Section -->
+  <div class="section">
+
+    <!-- Account Management -->
+    <div class="faq-group animate-in" id="account">
+      <div class="faq-group-label">Account Management</div>
+
+      <div class="faq-item" data-q="reset-password">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How do I reset my password?
+          <span class="faq-chevron"><svg viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Please note that the Rabt Network team cannot reset passwords or reactivate matrix.org accounts. If you have an email address attached to your account, you can reset your password through the app's login screen by selecting <strong>"Set a new password"</strong> and following the confirmation link sent to your email.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Do I need an email address to register?
+          <span class="faq-chevron"><svg viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Using an email address when creating a Rabt Network account is optional; it makes it easier for others to discover you and helps you reset your password if needed. It's ultimately up to the administrator of the server. For accounts on the matrix.org homeserver, supplying an email address is optional, but may occasionally be required for abuse mitigation.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What is the username used for?
+          <span class="faq-chevron"><svg viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Your username is used to create a <strong>Matrix ID</strong> that uniquely identifies you — distinguishing you from others with the same display name — while keeping your email confidential.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can I register with a phone number?
+          <span class="faq-chevron"><svg viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Phone number registration is no longer supported on Rabt Network. Please register using a username and optionally add an email address to your account.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat -->
+    <div class="faq-group animate-in" id="chat">
+      <div class="faq-group-label">Chat &amp; Messaging</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How can I mention someone in a message?
+          <span class="faq-chevron"><svg viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Simply type their name — no prefix required! They'll be notified automatically. Press <strong>Tab</strong> to autocomplete mentions while typing.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What mention types will notify me?
+          <span class="faq-chevron"><svg viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            By default, you'll be notified when your <strong>display name</strong> or <strong>username</strong> is mentioned. You can also add custom nicknames and keywords to trigger notifications — configure these in <strong>Settings → Notifications</strong>.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How do I send a file?
+          <span class="faq-chevron"><svg viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Two ways to share files:
+            <ul>
+              <li><strong>Desktop:</strong> Drag and drop the file directly into Rabt Network — it uploads automatically.</li>
+              <li><strong>Click:</strong> Use the paperclip icon in the text input field to browse your filesystem.</li>
+              <li><strong>iOS:</strong> Tap the upward arrow while in a chat.</li>
+              <li><strong>Android:</strong> Tap the <strong>+</strong> symbol while in a chat.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is there a way to know if a message has been read?
+          <span class="faq-chevron"><svg viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Yes! Rabt Network displays the avatars of users who have read your message to the right of the message. Hover over (or tap on mobile) an avatar to see the user's info and the exact time they read it.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How do I invite a contact to use Rabt Network?
+          <span class="faq-chevron"><svg viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Use the <strong>"Invite to this room"</strong> button in the right-hand Room Members list. You can invite by Matrix ID or by email address. Those without a Matrix ID will be able to preview the room if the room allows it.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How can I search for a file or message?
+          <span class="faq-chevron"><svg viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Click the <strong>magnifying glass icon</strong> near the top of the screen. You can search by keyword or filename, and filter results to a specific room or across all conversations. For encrypted rooms, search is only available on Desktop and requires <strong>Message Search</strong> to be enabled in Security &amp; Privacy settings.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings -->
+    <div class="faq-group animate-in" id="settings">
+      <div class="faq-group-label">Settings</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How do I change my account settings?
+          <span class="faq-chevron"><svg viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Click the dropdown menu under your name in the top-left corner of the web or desktop app and select <strong>Settings</strong>. From there you can change all account and general Rabt Network preferences.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How do I change my notification settings?
+          <span class="faq-chevron"><svg viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Go to <strong>Settings → Notifications</strong>. You can customise notifications globally or per-room. The per-room options are:
+            <ul>
+              <li><strong>Mute:</strong> No notifications, even for mentions or keywords.</li>
+              <li><strong>Mentions only:</strong> Only your name and keywords trigger noisy alerts.</li>
+              <li><strong>All messages:</strong> Silent notification for every message; noisy for mentions.</li>
+              <li><strong>All messages (noisy):</strong> Every message triggers sound and visual alerts.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How do I set up email notifications?
+          <span class="faq-chevron"><svg viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            In <strong>Settings → Notifications</strong>, enable the toggle labelled <strong>"Enable email notifications"</strong>. You'll then receive email alerts when you miss messages or receive new invites.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How can I change my display name?
+          <span class="faq-chevron"><svg viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Navigate to <strong>Settings → General</strong> (accessible from the dropdown menu under your name in the top-left corner) and update your display name there.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Why should I associate an email address to my account?
+          <span class="faq-chevron"><svg viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            We strongly recommend adding an email so you can recover your account if you lose your password. It also makes you easier to discover and is simpler to remember than a Matrix ID. You can add an email at any time in <strong>Settings → General</strong> — it's not required only at registration.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rooms -->
+    <div class="faq-group animate-in" id="rooms">
+      <div class="faq-group-label">Rooms</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How can I change settings for a specific room?
+          <span class="faq-chevron"><svg viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Click the <strong>cog icon</strong> next to the room name to access all room-specific settings including access, privacy, and member permissions.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can I restrict a room to specific people?
+          <span class="faq-chevron"><svg viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Yes. In the room's <strong>Security &amp; Privacy settings</strong>, select <strong>"Private (invite only)"</strong>. Only users with an explicit invitation (by email or Matrix ID) will be able to join. You can also restrict to Space members by adding the room to a Space.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can new members read the history of a room?
+          <span class="faq-chevron"><svg viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            It depends on the <strong>history visibility</strong> setting:
+            <ul>
+              <li><strong>Members (full history):</strong> New members can read all past messages.</li>
+              <li><strong>Members since invited:</strong> New members only see messages sent after their invite.</li>
+              <li><strong>Anyone:</strong> Non-members can "peek" at the room before joining (non-encrypted rooms only).</li>
+            </ul>
+            Note: changing history visibility doesn't retroactively affect already-sent messages.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can I make a room publicly discoverable?
+          <span class="faq-chevron"><svg viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Yes — enable <strong>"Publish this room to the public in the room directory"</strong> in room settings. This makes your room searchable on the server. However, users can only join if access isn't restricted to invite-only.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          As a room admin, can I control what members can do?
+          <span class="faq-chevron"><svg viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Absolutely. In <strong>Room Settings → Roles and Permissions</strong>, you can configure privilege levels for actions such as sending messages, banning/kicking members, redacting messages, updating room settings, and inviting new members.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What is a room address?
+          <span class="faq-chevron"><svg viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            By default rooms have a machine-generated ID. Setting a <strong>room address</strong> gives it a human-readable alias linked to your homeserver (e.g. <strong>#myroom:matrix.org</strong>). A room can have multiple addresses across different homeservers.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Privacy -->
+    <div class="faq-group animate-in" id="privacy">
+      <div class="faq-group-label">Privacy, Abuse &amp; Notices</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How is my personal data being used?
+          <span class="faq-chevron"><svg viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6"/></svg></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Rabt Network is a client that lets you connect to any homeserver in the Matrix network — similar to how a browser lets you visit any website. Each homeserver independently manages its own privacy and abuse policies. For details on how your data is handled, please review the applicable privacy policy for your homeserver. If you have further questions, contact your homeserver's data protection officer.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /section -->
+
+  <!-- Contact Strip -->
+  <div class="section animate-in">
+    <div class="contact-strip">
+      <div class="contact-text">
+        <h2>Still need help?</h2>
+        <p>Our support team is ready to assist you with any questions that aren't covered in the documentation above.</p>
+      </div>
+      <div class="contact-actions">
+        <a href="mailto:support@rabtt.com" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 4 12 13 22 4"/></svg>
+          Email Support
+        </a>
+        <a href="#" class="btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          Live Chat
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">
+      <img src="https://serv.bazari.aygroup.app/storage/app/public/rabtt.png" alt="Rabt">
+      <span style="font-size:0.82rem;color:var(--white-50);">© 2025 Rabt Network</span>
+    </div>
+    <p style="font-size:0.78rem;color:var(--white-50);">All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Contact</a>
+    </div>
+  </footer>
+
+</div><!-- /page-wrap -->
+
+<script>
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const answer = item.querySelector('.faq-a');
+    const isOpen = item.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-a').classList.remove('open');
+    });
+
+    // Open this one if it was closed
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.classList.add('open');
+    }
+  }
+
+  // Scroll animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = `${i * 0.06}s`;
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
+
+  // Search highlight (simple)
+  function doSearch() {
+    const q = document.getElementById('searchInput').value.toLowerCase().trim();
+    if (!q) return;
+    const items = document.querySelectorAll('.faq-item');
+    let first = null;
+    items.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      if (text.includes(q)) {
+        item.style.borderColor = 'var(--accent)';
+        item.style.boxShadow = '0 0 20px var(--accent-glow)';
+        if (!first) first = item;
+      } else {
+        item.style.borderColor = '';
+        item.style.boxShadow = '';
+      }
+    });
+    if (first) {
+      first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Auto-open first match
+      const btn = first.querySelector('.faq-q');
+      if (!first.classList.contains('open')) toggleFaq(btn);
+    }
+  }
+
+  document.getElementById('searchInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doSearch();
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rabt Network — Terms &amp; Conditions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-deepest: #040d1a;
+    --navy-deep: #071428;
+    --navy-mid: #0c1f3f;
+    --navy-light: #112952;
+    --navy-border: #1a3560;
+    --accent: #3b82f6;
+    --accent-bright: #60a5fa;
+    --accent-glow: rgba(59,130,246,0.18);
+    --accent-glow-strong: rgba(59,130,246,0.32);
+    --white: #ffffff;
+    --white-80: rgba(255,255,255,0.80);
+    --white-60: rgba(255,255,255,0.60);
+    --white-50: rgba(255,255,255,0.50);
+    --white-20: rgba(255,255,255,0.12);
+    --white-10: rgba(255,255,255,0.06);
+    --teal: #0ea5e9;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy-deepest);
+    color: var(--white-80);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none; z-index: 0;
+  }
+
+  .orb { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; }
+  .orb-1 { width: 600px; height: 600px; background: rgba(59,130,246,0.10); top: -200px; left: -200px; }
+  .orb-2 { width: 500px; height: 500px; background: rgba(14,165,233,0.07); bottom: 0; right: -150px; }
+
+  .page-wrap { position: relative; z-index: 1; }
+
+  /* ── Header ── */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    background: rgba(4,13,26,0.75);
+    border-bottom: 1px solid var(--navy-border);
+    padding: 0 40px; height: 72px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo-wrap { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .logo-img { height: 38px; width: auto; filter: brightness(1.1); }
+  .logo-text { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--white); letter-spacing: 0.02em; line-height: 1.1; }
+  .logo-text span { display: block; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-bright); }
+
+  .nav-links { display: flex; gap: 6px; }
+  .nav-link {
+    font-size: 0.78rem; font-family: 'Syne', sans-serif; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--white-50); text-decoration: none;
+    padding: 7px 16px; border-radius: 30px; border: 1px solid transparent;
+    transition: all 0.2s;
+  }
+  .nav-link:hover { color: var(--white); border-color: var(--navy-border); background: var(--white-10); }
+  .nav-link.active { color: var(--accent-bright); border-color: rgba(59,130,246,0.3); background: var(--accent-glow); }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 80px 40px 60px;
+    max-width: 860px; margin: 0 auto; text-align: center;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent-bright);
+    background: var(--accent-glow); border: 1px solid rgba(59,130,246,0.3);
+    border-radius: 40px; padding: 5px 16px; margin-bottom: 24px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: clamp(2.2rem, 4.5vw, 3.5rem); line-height: 1.1;
+    color: var(--white); margin-bottom: 18px;
+    animation: fadeUp 0.7s ease 0.1s both;
+  }
+  .hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--accent-bright), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-meta {
+    display: flex; align-items: center; justify-content: center; gap: 24px;
+    flex-wrap: wrap; margin-top: 24px;
+    animation: fadeUp 0.7s ease 0.2s both;
+  }
+  .hero-meta-item { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--white-50); }
+  .hero-meta-item svg { color: var(--accent-bright); }
+
+  /* ── Layout ── */
+  .doc-layout {
+    max-width: 1100px; margin: 0 auto;
+    padding: 0 40px 80px;
+    display: grid; grid-template-columns: 240px 1fr;
+    gap: 48px; align-items: start;
+  }
+
+  /* ── Sidebar ── */
+  .toc {
+    position: sticky; top: 90px;
+    background: var(--navy-mid); border: 1px solid var(--navy-border);
+    border-radius: 20px; padding: 24px 20px;
+  }
+  .toc-title {
+    font-family: 'Syne', sans-serif; font-size: 0.7rem;
+    font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent-bright); margin-bottom: 16px;
+  }
+  .toc-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+  .toc-list a {
+    display: block; padding: 8px 12px; border-radius: 10px;
+    font-size: 0.82rem; color: var(--white-50); text-decoration: none;
+    transition: all 0.2s; line-height: 1.4; border: 1px solid transparent;
+  }
+  .toc-list a:hover { color: var(--white); background: var(--white-10); border-color: var(--navy-border); }
+  .toc-list a.active { color: var(--accent-bright); background: var(--accent-glow); border-color: rgba(59,130,246,0.25); }
+  .toc-divider { height: 1px; background: var(--navy-border); margin: 12px 0; }
+  .toc-badge {
+    margin-top: 16px; padding: 10px 14px;
+    background: rgba(245,158,11,0.07); border: 1px solid rgba(245,158,11,0.2);
+    border-radius: 12px; font-size: 0.75rem; color: rgba(255,210,100,0.85); line-height: 1.5;
+  }
+
+  /* ── Content ── */
+  .doc-content { min-width: 0; }
+
+  .doc-section { margin-bottom: 56px; animation: fadeUp 0.6s ease both; }
+  .doc-section-header {
+    display: flex; align-items: flex-start; gap: 16px;
+    margin-bottom: 20px; padding-bottom: 16px;
+    border-bottom: 1px solid var(--navy-border);
+  }
+  .doc-section-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    border-radius: 13px; background: var(--accent-glow);
+    border: 1px solid rgba(59,130,246,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; margin-top: 2px;
+  }
+  .doc-section-title {
+    font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 700;
+    color: var(--white); margin-bottom: 4px;
+  }
+  .doc-section-num {
+    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent-bright);
+  }
+
+  .doc-content p { font-size: 0.95rem; line-height: 1.8; color: var(--white-60); margin-bottom: 14px; }
+  .doc-content p:last-child { margin-bottom: 0; }
+  .doc-content h4 {
+    font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700;
+    color: var(--white-80); margin: 22px 0 10px; letter-spacing: 0.02em;
+  }
+
+  .doc-list {
+    list-style: none; display: flex; flex-direction: column; gap: 8px; margin: 14px 0;
+  }
+  .doc-list li {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 0.92rem; line-height: 1.6; color: var(--white-60);
+    padding: 10px 14px;
+    background: var(--white-10); border: 1px solid var(--navy-border); border-radius: 10px;
+  }
+  .doc-list li::before { content: '→'; color: var(--accent-bright); font-size: 0.85rem; margin-top: 2px; flex-shrink: 0; }
+
+  .doc-list.prohibited li::before { content: '✕'; color: var(--danger); }
+  .doc-list.allowed li::before { content: '✓'; color: var(--success); }
+
+  .highlight-box {
+    background: var(--accent-glow); border: 1px solid rgba(59,130,246,0.3);
+    border-radius: 14px; padding: 18px 20px; margin: 18px 0;
+    font-size: 0.9rem; line-height: 1.7; color: var(--white-80);
+  }
+  .highlight-box.warning { background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25); color: rgba(255,220,130,0.85); }
+  .highlight-box.danger { background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.25); color: rgba(255,180,180,0.9); }
+  .highlight-box.success { background: rgba(16,185,129,0.08); border-color: rgba(16,185,129,0.25); color: rgba(110,231,183,0.9); }
+  .highlight-box strong { display: block; margin-bottom: 6px; font-weight: 600; }
+
+  /* ── Contact strip ── */
+  .contact-strip {
+    background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-light) 100%);
+    border: 1px solid var(--navy-border); border-radius: 24px; padding: 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 32px; flex-wrap: wrap; position: relative; overflow: hidden; margin-bottom: 60px;
+  }
+  .contact-strip::before {
+    content: ''; position: absolute; top: -80px; right: -80px;
+    width: 260px; height: 260px; border-radius: 50%;
+    background: var(--accent-glow); filter: blur(60px); pointer-events: none;
+  }
+  .contact-text h2 { font-family: 'Syne', sans-serif; font-size: 1.45rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .contact-text p { color: var(--white-50); font-size: 0.9rem; line-height: 1.6; max-width: 360px; }
+  .contact-actions { display: flex; gap: 14px; flex-shrink: 0; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--accent); color: white; border: none; border-radius: 12px;
+    padding: 13px 26px; font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.86rem;
+    letter-spacing: 0.04em; cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent-bright); transform: translateY(-2px); box-shadow: 0 8px 24px var(--accent-glow-strong); }
+  .btn-secondary {
+    background: var(--white-10); color: var(--white-80); border: 1px solid var(--navy-border);
+    border-radius: 12px; padding: 13px 26px; font-family: 'Syne', sans-serif; font-weight: 600;
+    font-size: 0.86rem; letter-spacing: 0.04em; cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s;
+  }
+  .btn-secondary:hover { background: var(--white-20); border-color: var(--accent); color: var(--white); }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--navy-border); padding: 32px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .footer-logo { display: flex; align-items: center; gap: 10px; }
+  .footer-logo img { height: 28px; opacity: 0.7; }
+  footer p { font-size: 0.78rem; color: var(--white-50); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 0.78rem; color: var(--white-50); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent-bright); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-in { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  .animate-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 860px) {
+    .doc-layout { grid-template-columns: 1fr; }
+    .toc { position: static; }
+    header { padding: 0 20px; }
+    .hero { padding: 60px 20px 40px; }
+    .doc-layout { padding: 0 20px 60px; }
+    .contact-strip { padding: 32px 24px; flex-direction: column; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+    .footer-links { justify-content: center; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<div class="page-wrap">
+
+  <!-- Header -->
+  <header>
+    <a href="#" class="logo-wrap">
+      <img src="https://serv.bazari.aygroup.app/storage/app/public/rabtt.png" alt="Rabt" class="logo-img">
+      <div class="logo-text">Rabt Network<span>Legal &amp; Privacy</span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="rabt-help-support.html" class="nav-link">Help Center</a>
+      <a href="rabt-privacy-policy.html" class="nav-link">Privacy Policy</a>
+      <a href="rabt-terms-conditions.html" class="nav-link active">Terms &amp; Conditions</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-eyebrow">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 0L7.5 4.5H12L8.25 7.25L9.75 12L6 9L2.25 12L3.75 7.25L0 4.5H4.5Z"/></svg>
+      Legal Document
+    </div>
+    <h1>Terms &amp; <em>Conditions</em></h1>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Effective Date: January 1, 2025
+      </div>
+      <div class="hero-meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Binding Agreement
+      </div>
+      <div class="hero-meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Last Updated: June 2025
+      </div>
+    </div>
+  </section>
+
+  <!-- Doc Layout -->
+  <div class="doc-layout">
+
+    <!-- TOC Sidebar -->
+    <aside class="toc">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list" id="tocList">
+        <li><a href="#acceptance" class="active">1. Acceptance of Terms</a></li>
+        <li><a href="#eligibility">2. Eligibility</a></li>
+        <li><a href="#account-terms">3. Account Responsibilities</a></li>
+        <li><a href="#acceptable-use">4. Acceptable Use</a></li>
+        <li><a href="#prohibited">5. Prohibited Conduct</a></li>
+        <li><a href="#content">6. User Content</a></li>
+        <li><a href="#ip">7. Intellectual Property</a></li>
+        <li><a href="#federation">8. Federation &amp; Third Parties</a></li>
+        <li><a href="#termination">9. Termination</a></li>
+        <li><a href="#disclaimers">10. Disclaimers</a></li>
+        <li><a href="#liability">11. Limitation of Liability</a></li>
+        <li><a href="#governing">12. Governing Law</a></li>
+        <li><a href="#contact-terms">13. Contact Us</a></li>
+      </ul>
+      <div class="toc-divider"></div>
+      <div class="toc-badge">
+        ⚠️ Please read these terms carefully before using Rabt Network. Using the platform means you agree to be bound by them.
+      </div>
+    </aside>
+
+    <!-- Content -->
+    <main class="doc-content">
+
+      <div class="doc-section animate-in" id="acceptance">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">📜</div>
+          <div>
+            <div class="doc-section-num">Section 01</div>
+            <div class="doc-section-title">Acceptance of Terms</div>
+          </div>
+        </div>
+        <p>These Terms and Conditions ("Terms") constitute a legally binding agreement between you ("User", "you") and Rabt Network ("Company", "we", "us", "our") governing your access to and use of the Rabt Network platform, applications, and all related services (collectively, the "Services").</p>
+        <p>By creating an account, accessing, or using the Services in any way, you acknowledge that you have read, understood, and agree to be bound by these Terms and our Privacy Policy, which is incorporated herein by reference.</p>
+        <div class="highlight-box warning">
+          <strong>Important Notice</strong>
+          If you do not agree to these Terms, you must not access or use the Rabt Network Services. Your continued use following any updates to these Terms constitutes your acceptance of the revised agreement.
+        </div>
+      </div>
+
+      <div class="doc-section animate-in" id="eligibility">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">✅</div>
+          <div>
+            <div class="doc-section-num">Section 02</div>
+            <div class="doc-section-title">Eligibility</div>
+          </div>
+        </div>
+        <p>To use Rabt Network, you must meet the following eligibility criteria:</p>
+        <ul class="doc-list allowed">
+          <li>Be at least 13 years of age (or 16 in applicable jurisdictions)</li>
+          <li>Have the legal capacity to enter into a binding agreement</li>
+          <li>Not be prohibited from receiving the Services under applicable law</li>
+          <li>Not have a previously suspended or terminated Rabt Network account</li>
+        </ul>
+        <p>By using the Services, you represent and warrant that you meet all eligibility requirements. We reserve the right to verify eligibility and refuse service to anyone for any lawful reason.</p>
+      </div>
+
+      <div class="doc-section animate-in" id="account-terms">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">🔐</div>
+          <div>
+            <div class="doc-section-num">Section 03</div>
+            <div class="doc-section-title">Account Responsibilities</div>
+          </div>
+        </div>
+        <p>When you create an account on Rabt Network, you take on the following responsibilities:</p>
+
+        <h4>Account Security</h4>
+        <ul class="doc-list">
+          <li>You are responsible for maintaining the confidentiality of your login credentials</li>
+          <li>You must notify us immediately at <strong>security@rabtt.com</strong> if you suspect unauthorized access</li>
+          <li>You are solely responsible for all activity that occurs under your account</li>
+        </ul>
+
+        <h4>Accurate Information</h4>
+        <ul class="doc-list">
+          <li>You agree to provide accurate, current, and complete information during registration</li>
+          <li>You agree to keep your account information up to date</li>
+          <li>You may not impersonate any person or entity, or misrepresent your identity</li>
+        </ul>
+
+        <h4>One Account Per Person</h4>
+        <p>Unless otherwise permitted, each individual may maintain only one active account. Creating duplicate accounts to circumvent bans, restrictions, or Terms violations is prohibited.</p>
+      </div>
+
+      <div class="doc-section animate-in" id="acceptable-use">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">✔️</div>
+          <div>
+            <div class="doc-section-num">Section 04</div>
+            <div class="doc-section-title">Acceptable Use</div>
+          </div>
+        </div>
+        <p>Rabt Network is a communication platform designed to connect people through messaging, rooms, and communities. You agree to use the Services only for lawful, legitimate purposes and in a manner consistent with these Terms.</p>
+        <p>Acceptable uses of Rabt Network include:</p>
+        <ul class="doc-list allowed">
+          <li>Personal, professional, or community communication and collaboration</li>
+          <li>Sharing information, files, and media in compliance with applicable laws</li>
+          <li>Building and administering communities and rooms with transparent governance</li>
+          <li>Integrating with the Matrix protocol ecosystem for interoperable communication</li>
+        </ul>
+        <div class="highlight-box success">
+          <strong>Open Communication</strong>
+          We believe in open, interoperable communication. Rabt Network is built on the Matrix protocol, meaning you can communicate across federated servers. Use this freedom responsibly.
+        </div>
+      </div>
+
+      <div class="doc-section animate-in" id="prohibited">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">🚫</div>
+          <div>
+            <div class="doc-section-num">Section 05</div>
+            <div class="doc-section-title">Prohibited Conduct</div>
+          </div>
+        </div>
+        <p>The following activities are strictly prohibited on Rabt Network and may result in immediate account suspension or termination:</p>
+
+        <h4>Harmful &amp; Illegal Content</h4>
+        <ul class="doc-list prohibited">
+          <li>Posting or distributing illegal content, including child sexual abuse material (CSAM)</li>
+          <li>Threatening, harassing, stalking, or intimidating any person</li>
+          <li>Inciting violence, hatred, or discrimination based on race, religion, gender, sexual orientation, or other protected characteristics</li>
+          <li>Distributing malware, viruses, or other malicious code</li>
+        </ul>
+
+        <h4>Platform Abuse</h4>
+        <ul class="doc-list prohibited">
+          <li>Spamming, scraping, or conducting automated abuse of the platform</li>
+          <li>Attempting to access, modify, or disrupt systems or accounts without authorization</li>
+          <li>Circumventing rate limits, security measures, or access controls</li>
+          <li>Creating fake accounts or engaging in coordinated inauthentic behavior</li>
+        </ul>
+
+        <h4>Intellectual Property Violations</h4>
+        <ul class="doc-list prohibited">
+          <li>Uploading or sharing content that infringes on third-party copyrights or trademarks</li>
+          <li>Reverse-engineering or decompiling proprietary components of the platform</li>
+        </ul>
+
+        <div class="highlight-box danger">
+          <strong>Zero Tolerance</strong>
+          Violations involving child safety, credible threats of violence, or attacks on critical infrastructure will result in immediate permanent termination and, where required, reporting to relevant law enforcement authorities.
+        </div>
+      </div>
+
+      <div class="doc-section animate-in" id="content">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">💬</div>
+          <div>
+            <div class="doc-section-num">Section 06</div>
+            <div class="doc-section-title">User Content</div>
+          </div>
+        </div>
+        <p>Rabt Network allows you to create, upload, transmit, and share content, including messages, files, images, and other materials ("User Content").</p>
+
+        <h4>Ownership</h4>
+        <p>You retain full ownership of all User Content you create. By using Rabt Network, you grant us a limited, non-exclusive, royalty-free license to host, store, transmit, and display your User Content solely as necessary to operate and improve the Services.</p>
+
+        <h4>Your Responsibility</h4>
+        <p>You are solely responsible for all User Content you post or share. You represent and warrant that:</p>
+        <ul class="doc-list">
+          <li>You have all necessary rights and permissions to share the content</li>
+          <li>The content does not violate any applicable laws or third-party rights</li>
+          <li>The content complies with these Terms and our Community Guidelines</li>
+        </ul>
+
+        <h4>Content Moderation</h4>
+        <p>We reserve the right to review, remove, or restrict access to User Content that violates these Terms, at our sole discretion and without prior notice. We are not obligated to monitor all content but may do so for safety and compliance purposes.</p>
+      </div>
+
+      <div class="doc-section animate-in" id="ip">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">©️</div>
+          <div>
+            <div class="doc-section-num">Section 07</div>
+            <div class="doc-section-title">Intellectual Property</div>
+          </div>
+        </div>
+        <p>The Rabt Network name, logo, platform design, and all proprietary features are the intellectual property of Rabt Network and are protected by applicable intellectual property laws.</p>
+        <ul class="doc-list">
+          <li>You may not use our trademarks, logos, or brand assets without prior written consent</li>
+          <li>The open-source components of our platform are subject to their respective open-source licenses</li>
+          <li>Nothing in these Terms transfers any ownership of our intellectual property to you</li>
+        </ul>
+        <p>If you believe your intellectual property rights have been infringed, please contact us at <strong>legal@rabtt.com</strong> with a detailed description of the claimed infringement.</p>
+      </div>
+
+      <div class="doc-section animate-in" id="federation">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">🌐</div>
+          <div>
+            <div class="doc-section-num">Section 08</div>
+            <div class="doc-section-title">Federation &amp; Third-Party Services</div>
+          </div>
+        </div>
+        <p>Rabt Network operates on the Matrix protocol, which enables communication across federated homeservers operated by independent third parties.</p>
+        <div class="highlight-box warning">
+          <strong>Important: Federated Communication</strong>
+          When you join rooms hosted on other homeservers or communicate with users on federated servers, your messages and data may be transmitted to and stored on those external servers. Rabt Network does not control the policies, security practices, or moderation of third-party homeservers.
+        </div>
+        <p>You acknowledge that:</p>
+        <ul class="doc-list">
+          <li>Third-party homeservers operate under their own terms and privacy policies</li>
+          <li>Rabt Network is not responsible for the actions or content of federated servers</li>
+          <li>You interact with third-party services and servers at your own risk</li>
+          <li>Links to external websites or services are provided for convenience only and do not constitute endorsement</li>
+        </ul>
+      </div>
+
+      <div class="doc-section animate-in" id="termination">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">🔚</div>
+          <div>
+            <div class="doc-section-num">Section 09</div>
+            <div class="doc-section-title">Termination &amp; Suspension</div>
+          </div>
+        </div>
+        <p>Either party may terminate the relationship established by these Terms at any time:</p>
+
+        <h4>By You</h4>
+        <p>You may delete your account at any time through your account settings. Upon deletion, we will process your data in accordance with our Privacy Policy.</p>
+
+        <h4>By Rabt Network</h4>
+        <p>We reserve the right to suspend, restrict, or permanently terminate your account, with or without notice, if we determine in our sole discretion that you have:</p>
+        <ul class="doc-list">
+          <li>Violated any provision of these Terms or our Community Guidelines</li>
+          <li>Engaged in conduct that endangers the safety or rights of others</li>
+          <li>Created legal risk or liability for Rabt Network</li>
+          <li>Provided false information during registration or at any other time</li>
+        </ul>
+        <p>Upon termination, your right to access and use the Services will immediately cease. Provisions of these Terms that by their nature should survive termination will remain in effect.</p>
+      </div>
+
+      <div class="doc-section animate-in" id="disclaimers">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">⚠️</div>
+          <div>
+            <div class="doc-section-num">Section 10</div>
+            <div class="doc-section-title">Disclaimers</div>
+          </div>
+        </div>
+        <p>The Services are provided on an "as is" and "as available" basis, without warranties of any kind, either express or implied. To the fullest extent permitted by applicable law, Rabt Network disclaims all warranties, including but not limited to:</p>
+        <ul class="doc-list">
+          <li>Warranties of merchantability, fitness for a particular purpose, or non-infringement</li>
+          <li>Guarantees that the Services will be uninterrupted, error-free, or secure</li>
+          <li>Warranties regarding the accuracy or reliability of any content on the platform</li>
+        </ul>
+        <p>We do not warrant that any defects or errors will be corrected, or that the Services are free of viruses or other harmful components.</p>
+      </div>
+
+      <div class="doc-section animate-in" id="liability">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">⚖️</div>
+          <div>
+            <div class="doc-section-num">Section 11</div>
+            <div class="doc-section-title">Limitation of Liability</div>
+          </div>
+        </div>
+        <p>To the maximum extent permitted by applicable law, Rabt Network and its affiliates, officers, directors, employees, and agents shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to:</p>
+        <ul class="doc-list">
+          <li>Loss of data, profits, revenue, goodwill, or business opportunities</li>
+          <li>Damages arising from unauthorized access to your account or communications</li>
+          <li>Damages resulting from third-party conduct on federated servers</li>
+          <li>Interruption of services or inability to access the platform</li>
+        </ul>
+        <p>In jurisdictions that do not allow the exclusion of certain warranties or limitation of liability, our liability shall be limited to the greatest extent permitted by law.</p>
+      </div>
+
+      <div class="doc-section animate-in" id="governing">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">🏛️</div>
+          <div>
+            <div class="doc-section-num">Section 12</div>
+            <div class="doc-section-title">Governing Law &amp; Dispute Resolution</div>
+          </div>
+        </div>
+        <p>These Terms shall be governed by and construed in accordance with the applicable laws of the jurisdiction in which Rabt Network is incorporated, without regard to conflict-of-law principles.</p>
+
+        <h4>Dispute Resolution</h4>
+        <p>In the event of any dispute arising out of or relating to these Terms or the Services, the parties agree to first attempt resolution through good-faith negotiation. If negotiation fails, disputes shall be resolved through binding arbitration or the applicable courts of the governing jurisdiction.</p>
+
+        <h4>Class Action Waiver</h4>
+        <p>To the extent permitted by law, you agree that any dispute resolution proceedings will be conducted on an individual basis and not as a class action or representative proceeding.</p>
+      </div>
+
+      <div class="doc-section animate-in" id="contact-terms">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">✉️</div>
+          <div>
+            <div class="doc-section-num">Section 13</div>
+            <div class="doc-section-title">Contact Us</div>
+          </div>
+        </div>
+        <p>If you have any questions about these Terms and Conditions, or wish to report a violation, please contact us:</p>
+        <ul class="doc-list">
+          <li><strong>General Legal Inquiries:</strong> legal@rabtt.com</li>
+          <li><strong>Abuse &amp; Safety Reports:</strong> abuse@rabtt.com</li>
+          <li><strong>Copyright / IP Claims:</strong> legal@rabtt.com</li>
+          <li><strong>Security Vulnerabilities:</strong> security@rabtt.com</li>
+        </ul>
+        <p>For non-legal questions and platform support, please visit our <a href="rabt-help-support.html" style="color:var(--accent-bright);text-decoration:none;">Help Center</a>.</p>
+      </div>
+
+      <!-- Contact strip -->
+      <div class="contact-strip animate-in">
+        <div class="contact-text">
+          <h2>Questions about our terms?</h2>
+          <p>Our legal team is available to clarify any aspect of these Terms and Conditions. Don't hesitate to reach out.</p>
+        </div>
+        <div class="contact-actions">
+          <a href="mailto:legal@rabtt.com" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 4 12 13 22 4"/></svg>
+            Email Legal Team
+          </a>
+          <a href="rabt-help-support.html" class="btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            Help Center
+          </a>
+        </div>
+      </div>
+
+    </main>
+  </div><!-- /doc-layout -->
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">
+      <img src="https://serv.bazari.aygroup.app/storage/app/public/rabtt.png" alt="Rabt">
+      <span style="font-size:0.82rem;color:var(--white-50);">© 2025 Rabt Network</span>
+    </div>
+    <p style="font-size:0.78rem;color:var(--white-50);">All rights reserved.</p>
+    <div class="footer-links">
+      <a href="rabt-privacy-policy.html">Privacy Policy</a>
+      <a href="rabt-terms-conditions.html">Terms of Service</a>
+      <a href="rabt-help-support.html">Help Center</a>
+    </div>
+  </footer>
+
+</div><!-- /page-wrap -->
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = `${i * 0.05}s`;
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
+
+  // Active TOC on scroll
+  const sections = document.querySelectorAll('.doc-section[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    tocLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+  }, { passive: true });
+</script>
+</body>
+</html>

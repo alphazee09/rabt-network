@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rabt Network — Privacy Policy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-deepest: #040d1a;
+    --navy-deep: #071428;
+    --navy-mid: #0c1f3f;
+    --navy-light: #112952;
+    --navy-border: #1a3560;
+    --accent: #3b82f6;
+    --accent-bright: #60a5fa;
+    --accent-glow: rgba(59,130,246,0.18);
+    --accent-glow-strong: rgba(59,130,246,0.32);
+    --white: #ffffff;
+    --white-80: rgba(255,255,255,0.80);
+    --white-60: rgba(255,255,255,0.60);
+    --white-50: rgba(255,255,255,0.50);
+    --white-20: rgba(255,255,255,0.12);
+    --white-10: rgba(255,255,255,0.06);
+    --teal: #0ea5e9;
+    --success: #10b981;
+    --warning: #f59e0b;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy-deepest);
+    color: var(--white-80);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .orb { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; }
+  .orb-1 { width: 600px; height: 600px; background: rgba(59,130,246,0.10); top: -200px; left: -200px; }
+  .orb-2 { width: 500px; height: 500px; background: rgba(14,165,233,0.07); bottom: 0; right: -150px; }
+
+  .page-wrap { position: relative; z-index: 1; }
+
+  /* ── Header ── */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    background: rgba(4,13,26,0.75);
+    border-bottom: 1px solid var(--navy-border);
+    padding: 0 40px; height: 72px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo-wrap { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .logo-img { height: 38px; width: auto; filter: brightness(1.1); }
+  .logo-text { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--white); letter-spacing: 0.02em; line-height: 1.1; }
+  .logo-text span { display: block; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-bright); }
+
+  .nav-links { display: flex; gap: 6px; }
+  .nav-link {
+    font-size: 0.78rem; font-family: 'Syne', sans-serif; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--white-50); text-decoration: none;
+    padding: 7px 16px; border-radius: 30px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+  }
+  .nav-link:hover { color: var(--white); border-color: var(--navy-border); background: var(--white-10); }
+  .nav-link.active { color: var(--accent-bright); border-color: rgba(59,130,246,0.3); background: var(--accent-glow); }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 80px 40px 60px;
+    max-width: 860px; margin: 0 auto; text-align: center;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent-bright);
+    background: var(--accent-glow); border: 1px solid rgba(59,130,246,0.3);
+    border-radius: 40px; padding: 5px 16px; margin-bottom: 24px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: clamp(2.2rem, 4.5vw, 3.5rem); line-height: 1.1;
+    color: var(--white); margin-bottom: 18px;
+    animation: fadeUp 0.7s ease 0.1s both;
+  }
+  .hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--accent-bright), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-meta {
+    display: flex; align-items: center; justify-content: center; gap: 24px;
+    flex-wrap: wrap; margin-top: 24px;
+    animation: fadeUp 0.7s ease 0.2s both;
+  }
+  .hero-meta-item { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--white-50); }
+  .hero-meta-item svg { color: var(--accent-bright); }
+
+  /* ── Layout: sidebar + content ── */
+  .doc-layout {
+    max-width: 1100px; margin: 0 auto;
+    padding: 0 40px 80px;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* ── Sidebar TOC ── */
+  .toc {
+    position: sticky; top: 90px;
+    background: var(--navy-mid);
+    border: 1px solid var(--navy-border);
+    border-radius: 20px;
+    padding: 24px 20px;
+  }
+  .toc-title {
+    font-family: 'Syne', sans-serif; font-size: 0.7rem;
+    font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent-bright); margin-bottom: 16px;
+  }
+  .toc-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+  .toc-list a {
+    display: block; padding: 8px 12px; border-radius: 10px;
+    font-size: 0.82rem; color: var(--white-50); text-decoration: none;
+    transition: all 0.2s; line-height: 1.4;
+    border: 1px solid transparent;
+  }
+  .toc-list a:hover { color: var(--white); background: var(--white-10); border-color: var(--navy-border); }
+  .toc-list a.active { color: var(--accent-bright); background: var(--accent-glow); border-color: rgba(59,130,246,0.25); }
+  .toc-divider { height: 1px; background: var(--navy-border); margin: 12px 0; }
+  .toc-badge {
+    margin-top: 16px; padding: 10px 14px;
+    background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2);
+    border-radius: 12px; font-size: 0.75rem; color: rgba(16,185,129,0.9);
+    line-height: 1.5;
+  }
+
+  /* ── Document content ── */
+  .doc-content { min-width: 0; }
+
+  .doc-section {
+    margin-bottom: 56px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .doc-section-header {
+    display: flex; align-items: flex-start; gap: 16px;
+    margin-bottom: 20px; padding-bottom: 16px;
+    border-bottom: 1px solid var(--navy-border);
+  }
+  .doc-section-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    border-radius: 13px;
+    background: var(--accent-glow); border: 1px solid rgba(59,130,246,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; margin-top: 2px;
+  }
+  .doc-section-title {
+    font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 700;
+    color: var(--white); margin-bottom: 4px;
+  }
+  .doc-section-num {
+    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent-bright);
+  }
+
+  .doc-content p {
+    font-size: 0.95rem; line-height: 1.8; color: var(--white-60);
+    margin-bottom: 14px;
+  }
+  .doc-content p:last-child { margin-bottom: 0; }
+
+  .doc-content h4 {
+    font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700;
+    color: var(--white-80); margin: 22px 0 10px;
+    letter-spacing: 0.02em;
+  }
+
+  .doc-list {
+    list-style: none; display: flex; flex-direction: column; gap: 8px;
+    margin: 14px 0;
+  }
+  .doc-list li {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 0.92rem; line-height: 1.6; color: var(--white-60);
+    padding: 10px 14px;
+    background: var(--white-10); border: 1px solid var(--navy-border);
+    border-radius: 10px;
+  }
+  .doc-list li::before {
+    content: '→'; color: var(--accent-bright);
+    font-size: 0.85rem; margin-top: 2px; flex-shrink: 0;
+  }
+
+  .highlight-box {
+    background: var(--accent-glow); border: 1px solid rgba(59,130,246,0.3);
+    border-radius: 14px; padding: 18px 20px; margin: 18px 0;
+    font-size: 0.9rem; line-height: 1.7; color: var(--white-80);
+  }
+  .highlight-box.warning {
+    background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25);
+    color: rgba(255,220,130,0.85);
+  }
+  .highlight-box.success {
+    background: rgba(16,185,129,0.08); border-color: rgba(16,185,129,0.25);
+    color: rgba(110,231,183,0.9);
+  }
+  .highlight-box strong { display: block; margin-bottom: 6px; font-weight: 600; }
+
+  .data-table {
+    width: 100%; border-collapse: collapse; margin: 18px 0;
+    font-size: 0.88rem;
+  }
+  .data-table th {
+    background: var(--navy-mid); color: var(--accent-bright);
+    font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 12px 16px; text-align: left;
+    border-bottom: 1px solid var(--navy-border);
+  }
+  .data-table td {
+    padding: 12px 16px; color: var(--white-60); line-height: 1.5;
+    border-bottom: 1px solid var(--navy-border);
+    vertical-align: top;
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: var(--white-10); }
+
+  /* ── Contact box ── */
+  .contact-strip {
+    background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-light) 100%);
+    border: 1px solid var(--navy-border);
+    border-radius: 24px; padding: 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 32px; flex-wrap: wrap;
+    position: relative; overflow: hidden; margin-bottom: 60px;
+  }
+  .contact-strip::before {
+    content: ''; position: absolute; top: -80px; right: -80px;
+    width: 260px; height: 260px; border-radius: 50%;
+    background: var(--accent-glow); filter: blur(60px); pointer-events: none;
+  }
+  .contact-text h2 { font-family: 'Syne', sans-serif; font-size: 1.45rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .contact-text p { color: var(--white-50); font-size: 0.9rem; line-height: 1.6; max-width: 360px; }
+  .contact-actions { display: flex; gap: 14px; flex-shrink: 0; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: white; border: none; border-radius: 12px;
+    padding: 13px 26px; font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.86rem;
+    letter-spacing: 0.04em; cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent-bright); transform: translateY(-2px); box-shadow: 0 8px 24px var(--accent-glow-strong); }
+  .btn-secondary {
+    background: var(--white-10); color: var(--white-80); border: 1px solid var(--navy-border);
+    border-radius: 12px; padding: 13px 26px; font-family: 'Syne', sans-serif; font-weight: 600;
+    font-size: 0.86rem; letter-spacing: 0.04em; cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s;
+  }
+  .btn-secondary:hover { background: var(--white-20); border-color: var(--accent); color: var(--white); }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--navy-border); padding: 32px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .footer-logo { display: flex; align-items: center; gap: 10px; }
+  .footer-logo img { height: 28px; opacity: 0.7; }
+  footer p { font-size: 0.78rem; color: var(--white-50); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 0.78rem; color: var(--white-50); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent-bright); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-in { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  .animate-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 860px) {
+    .doc-layout { grid-template-columns: 1fr; }
+    .toc { position: static; }
+    header { padding: 0 20px; }
+    .hero { padding: 60px 20px 40px; }
+    .doc-layout { padding: 0 20px 60px; }
+    .contact-strip { padding: 32px 24px; flex-direction: column; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+    .footer-links { justify-content: center; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<div class="page-wrap">
+
+  <!-- Header -->
+  <header>
+    <a href="#" class="logo-wrap">
+      <img src="https://serv.bazari.aygroup.app/storage/app/public/rabtt.png" alt="Rabt" class="logo-img">
+      <div class="logo-text">Rabt Network<span>Legal &amp; Privacy</span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="rabt-help-support.html" class="nav-link">Help Center</a>
+      <a href="rabt-privacy-policy.html" class="nav-link active">Privacy Policy</a>
+      <a href="rabt-terms-conditions.html" class="nav-link">Terms &amp; Conditions</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-eyebrow">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 0L7.5 4.5H12L8.25 7.25L9.75 12L6 9L2.25 12L3.75 7.25L0 4.5H4.5Z"/></svg>
+      Legal Document
+    </div>
+    <h1>Privacy <em>Policy</em></h1>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Effective Date: January 1, 2025
+      </div>
+      <div class="hero-meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        GDPR Compliant
+      </div>
+      <div class="hero-meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Last Updated: June 2025
+      </div>
+    </div>
+  </section>
+
+  <!-- Doc Layout -->
+  <div class="doc-layout">
+
+    <!-- TOC Sidebar -->
+    <aside class="toc">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list" id="tocList">
+        <li><a href="#intro" class="active">1. Introduction</a></li>
+        <li><a href="#collection">2. Data We Collect</a></li>
+        <li><a href="#usage">3. How We Use Data</a></li>
+        <li><a href="#sharing">4. Data Sharing</a></li>
+        <li><a href="#storage">5. Data Storage</a></li>
+        <li><a href="#cookies">6. Cookies</a></li>
+        <li><a href="#rights">7. Your Rights</a></li>
+        <li><a href="#children">8. Children's Privacy</a></li>
+        <li><a href="#changes">9. Policy Changes</a></li>
+        <li><a href="#contact-privacy">10. Contact Us</a></li>
+      </ul>
+      <div class="toc-divider"></div>
+      <div class="toc-badge">
+        🔒 Your data is protected under applicable data protection laws. We never sell your personal information.
+      </div>
+    </aside>
+
+    <!-- Content -->
+    <main class="doc-content">
+
+      <div class="doc-section animate-in" id="intro">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">👋</div>
+          <div>
+            <div class="doc-section-num">Section 01</div>
+            <div class="doc-section-title">Introduction</div>
+          </div>
+        </div>
+        <p>Welcome to Rabt Network. We are committed to protecting your privacy and handling your personal data with transparency, integrity, and care. This Privacy Policy explains how Rabt Network ("we", "us", or "our") collects, uses, stores, and protects your information when you use our platform, applications, and services (collectively, the "Services").</p>
+        <p>By accessing or using Rabt Network, you agree to the terms of this Privacy Policy. If you do not agree, please discontinue use of our Services.</p>
+        <div class="highlight-box">
+          <strong>Our Core Commitment</strong>
+          We believe privacy is a fundamental right. Rabt Network is built on open, federated technology — meaning your data is never locked in, and you always retain control over your communications and personal information.
+        </div>
+      </div>
+
+      <div class="doc-section animate-in" id="collection">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">📋</div>
+          <div>
+            <div class="doc-section-num">Section 02</div>
+            <div class="doc-section-title">Data We Collect</div>
+          </div>
+        </div>
+        <p>We collect information to provide and improve our Services. The data we collect falls into the following categories:</p>
+
+        <h4>Account Information</h4>
+        <ul class="doc-list">
+          <li>Username and Matrix ID (required for account creation)</li>
+          <li>Email address (optional but recommended for account recovery)</li>
+          <li>Display name and avatar/profile picture</li>
+          <li>Password (stored as a secure cryptographic hash — never in plain text)</li>
+        </ul>
+
+        <h4>Usage &amp; Communication Data</h4>
+        <ul class="doc-list">
+          <li>Messages, files, and media you send and receive (encrypted where enabled)</li>
+          <li>Room memberships, join/leave history, and room settings you configure</li>
+          <li>Read receipts and typing indicators (where enabled)</li>
+          <li>Device and client information (e.g., app version, operating system)</li>
+        </ul>
+
+        <h4>Technical Data</h4>
+        <ul class="doc-list">
+          <li>IP addresses and approximate geolocation (for security and fraud prevention)</li>
+          <li>Log data including access times, pages visited, and error reports</li>
+          <li>Cookies and similar tracking technologies (see Section 6)</li>
+        </ul>
+
+        <div class="highlight-box warning">
+          <strong>End-to-End Encrypted Rooms</strong>
+          For rooms with end-to-end encryption enabled, message content is encrypted on your device before transmission. Rabt Network servers store encrypted data only — we cannot read the content of your messages in such rooms.
+        </div>
+      </div>
+
+      <div class="doc-section animate-in" id="usage">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">⚙️</div>
+          <div>
+            <div class="doc-section-num">Section 03</div>
+            <div class="doc-section-title">How We Use Your Data</div>
+          </div>
+        </div>
+        <p>We use the information we collect for the following purposes:</p>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Purpose</th>
+              <th>Legal Basis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Providing and operating the Services</td><td>Contract performance</td></tr>
+            <tr><td>Account creation and authentication</td><td>Contract performance</td></tr>
+            <tr><td>Sending service-related notifications and emails</td><td>Legitimate interests</td></tr>
+            <tr><td>Abuse detection, security monitoring, and fraud prevention</td><td>Legitimate interests</td></tr>
+            <tr><td>Improving our platform and user experience</td><td>Legitimate interests</td></tr>
+            <tr><td>Complying with legal obligations</td><td>Legal obligation</td></tr>
+            <tr><td>Email notifications (if opted in)</td><td>Consent</td></tr>
+          </tbody>
+        </table>
+
+        <p>We do not use your personal data for targeted advertising, and we do not sell your data to any third party.</p>
+      </div>
+
+      <div class="doc-section animate-in" id="sharing">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">🤝</div>
+          <div>
+            <div class="doc-section-num">Section 04</div>
+            <div class="doc-section-title">Data Sharing &amp; Disclosure</div>
+          </div>
+        </div>
+        <p>Rabt Network is built on the Matrix protocol, which is inherently federated. This means certain data may be shared with other servers in the Matrix network as part of normal platform operation.</p>
+
+        <h4>Federation</h4>
+        <p>When you participate in rooms or communicate with users on other Matrix homeservers, your messages, display name, and avatar may be shared with those servers. This is fundamental to how the Matrix network operates and enables interoperability.</p>
+
+        <h4>Service Providers</h4>
+        <p>We may share data with trusted third-party vendors who assist in operating our Services (e.g., cloud hosting, analytics). These providers are contractually obligated to protect your data and may not use it for their own purposes.</p>
+
+        <h4>Legal Requirements</h4>
+        <p>We may disclose your information when required by law, court order, or governmental authority, or when we believe disclosure is necessary to protect the rights, safety, or property of Rabt Network or others.</p>
+
+        <div class="highlight-box success">
+          <strong>We Never Sell Your Data</strong>
+          Rabt Network does not and will never sell, rent, or trade your personal information to third parties for commercial purposes.
+        </div>
+      </div>
+
+      <div class="doc-section animate-in" id="storage">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">🗄️</div>
+          <div>
+            <div class="doc-section-num">Section 05</div>
+            <div class="doc-section-title">Data Storage &amp; Retention</div>
+          </div>
+        </div>
+        <p>Your data is stored on secure servers. We retain personal data for as long as your account is active or as needed to provide our Services.</p>
+        <ul class="doc-list">
+          <li>Account data is retained until you delete your account</li>
+          <li>Message history is retained per room settings configured by room administrators</li>
+          <li>Server logs are retained for up to 90 days for security and debugging purposes</li>
+          <li>Backup copies may be retained for up to 30 days after deletion for disaster recovery</li>
+        </ul>
+        <p>Upon account deletion, we will remove your personal data within 30 days, except where retention is required by law or legitimate security purposes.</p>
+      </div>
+
+      <div class="doc-section animate-in" id="cookies">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">🍪</div>
+          <div>
+            <div class="doc-section-num">Section 06</div>
+            <div class="doc-section-title">Cookies &amp; Tracking</div>
+          </div>
+        </div>
+        <p>Rabt Network uses essential cookies and similar technologies to operate our Services. These are strictly necessary for authentication and session management.</p>
+        <ul class="doc-list">
+          <li><strong>Session cookies:</strong> Keep you logged in during a session</li>
+          <li><strong>Security cookies:</strong> Help detect and prevent fraudulent activity</li>
+          <li><strong>Preference cookies:</strong> Remember your settings and preferences</li>
+        </ul>
+        <p>We do not use advertising or tracking cookies. You can control cookie settings through your browser, though disabling essential cookies may impact platform functionality.</p>
+      </div>
+
+      <div class="doc-section animate-in" id="rights">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">⚖️</div>
+          <div>
+            <div class="doc-section-num">Section 07</div>
+            <div class="doc-section-title">Your Rights</div>
+          </div>
+        </div>
+        <p>Depending on your location, you may have the following rights regarding your personal data:</p>
+        <ul class="doc-list">
+          <li><strong>Right of Access:</strong> Request a copy of the personal data we hold about you</li>
+          <li><strong>Right to Rectification:</strong> Correct inaccurate or incomplete personal data</li>
+          <li><strong>Right to Erasure:</strong> Request deletion of your personal data ("right to be forgotten")</li>
+          <li><strong>Right to Restriction:</strong> Request that we limit the processing of your data</li>
+          <li><strong>Right to Data Portability:</strong> Receive your data in a structured, machine-readable format</li>
+          <li><strong>Right to Object:</strong> Object to processing of your data based on legitimate interests</li>
+          <li><strong>Right to Withdraw Consent:</strong> Withdraw consent at any time where processing is based on consent</li>
+        </ul>
+        <p>To exercise any of these rights, please contact our Data Protection Officer at <strong>privacy@rabtt.com</strong>. We will respond to your request within 30 days.</p>
+      </div>
+
+      <div class="doc-section animate-in" id="children">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">👶</div>
+          <div>
+            <div class="doc-section-num">Section 08</div>
+            <div class="doc-section-title">Children's Privacy</div>
+          </div>
+        </div>
+        <p>Rabt Network is not directed at children under the age of 13 (or 16 in certain jurisdictions). We do not knowingly collect personal data from minors. If you believe a child has provided us with personal information, please contact us immediately at <strong>privacy@rabtt.com</strong> and we will take steps to delete such data promptly.</p>
+      </div>
+
+      <div class="doc-section animate-in" id="changes">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">🔄</div>
+          <div>
+            <div class="doc-section-num">Section 09</div>
+            <div class="doc-section-title">Changes to This Policy</div>
+          </div>
+        </div>
+        <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, or legal requirements. When we make material changes, we will notify you via:</p>
+        <ul class="doc-list">
+          <li>A prominent notice within the Rabt Network platform</li>
+          <li>Email notification (if you have provided an email address)</li>
+          <li>An updated "Last Updated" date at the top of this page</li>
+        </ul>
+        <p>Your continued use of Rabt Network after changes become effective constitutes your acceptance of the revised policy.</p>
+      </div>
+
+      <div class="doc-section animate-in" id="contact-privacy">
+        <div class="doc-section-header">
+          <div class="doc-section-icon">✉️</div>
+          <div>
+            <div class="doc-section-num">Section 10</div>
+            <div class="doc-section-title">Contact Us</div>
+          </div>
+        </div>
+        <p>If you have questions, concerns, or requests related to this Privacy Policy or your personal data, please reach out to us:</p>
+        <ul class="doc-list">
+          <li><strong>Email:</strong> privacy@rabtt.com</li>
+          <li><strong>Data Protection Officer:</strong> dpo@rabtt.com</li>
+          <li><strong>Mailing Address:</strong> Rabt Network Legal Team, [Company Address]</li>
+        </ul>
+        <p>We take all privacy inquiries seriously and will respond within the timeframes required by applicable law.</p>
+      </div>
+
+      <!-- Contact Strip -->
+      <div class="contact-strip animate-in">
+        <div class="contact-text">
+          <h2>Privacy questions?</h2>
+          <p>Our Data Protection Officer is here to help with any concerns about how we handle your personal information.</p>
+        </div>
+        <div class="contact-actions">
+          <a href="mailto:privacy@rabtt.com" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 4 12 13 22 4"/></svg>
+            Email DPO
+          </a>
+          <a href="rabt-help-support.html" class="btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            Help Center
+          </a>
+        </div>
+      </div>
+
+    </main>
+  </div><!-- /doc-layout -->
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">
+      <img src="https://serv.bazari.aygroup.app/storage/app/public/rabtt.png" alt="Rabt">
+      <span style="font-size:0.82rem;color:var(--white-50);">© 2025 Rabt Network</span>
+    </div>
+    <p style="font-size:0.78rem;color:var(--white-50);">All rights reserved.</p>
+    <div class="footer-links">
+      <a href="rabt-privacy-policy.html">Privacy Policy</a>
+      <a href="rabt-terms-conditions.html">Terms of Service</a>
+      <a href="rabt-help-support.html">Help Center</a>
+    </div>
+  </footer>
+
+</div><!-- /page-wrap -->
+
+<script>
+  // Scroll animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = `${i * 0.05}s`;
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
+
+  // Active TOC highlight on scroll
+  const sections = document.querySelectorAll('.doc-section[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  const onScroll = () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    tocLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>
+</body>
+</html>
